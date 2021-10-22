@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql;
+using MvcTokoOnline.Data;
 
 namespace MvcTokoOnline
 {
@@ -26,6 +27,12 @@ namespace MvcTokoOnline
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<MvcTokoOnlineDbContext>(option =>
+            {
+                var connectionString = Configuration.GetConnectionString("TokoOnline");
+                var serverVersion = new MariaDbServerVersion(new Version(10, 6, 4));
+                option.UseMySql(connectionString, serverVersion);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

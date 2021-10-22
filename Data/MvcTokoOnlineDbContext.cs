@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MvcTokoOnline.Models;
 
-namespace MvcMovie.Data
+namespace MvcTokoOnline.Data
 {
     public class MvcTokoOnlineDbContext : DbContext
     {
