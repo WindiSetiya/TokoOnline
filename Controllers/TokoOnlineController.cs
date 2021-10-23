@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MvcTokoOnline.Data;
+using MvcTokoOnline.Models;
 
 namespace MvcTokoOnline.Controllers
 {
@@ -23,6 +24,23 @@ namespace MvcTokoOnline.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login([Bind("ID,Email,Pasword")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.customers.Add(customer);
+                await _context.SaveChangesAsync();
+            }
+            return View(customer);
         }
     }
 }
