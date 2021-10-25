@@ -1,12 +1,10 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace MvcTokoOnline.Models
 {
-    public class Customer
+    public class Customer : IdentityUser
     {
-        public int ID { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
     }
 }
