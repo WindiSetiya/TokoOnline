@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MvcTokoOnline.Models
 {
@@ -7,5 +9,6 @@ namespace MvcTokoOnline.Models
     {
         public int ID { get; set; }
         public string Nama { get; set; }
+        public List <Produk> Category{get;set;}
     }
 }

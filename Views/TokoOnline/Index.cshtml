@@ -1,5 +1,38 @@
-﻿@{
+﻿@model MvcTokoOnline.Models.Kategori
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<h1>Welcome to our online store</h1>
+<h2>Selamat Bergabung Di Toko Online Kami</h2>
+
+<h6>Selamat berbelanja</h6>
+  
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category[0].ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category[0].Nama)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Category)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nama)
+                </td>
+                <td>
+                    <a asp-action="Produk" asp-route-id="@item.ID">Details</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

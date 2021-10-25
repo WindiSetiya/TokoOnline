@@ -21,10 +21,22 @@ namespace MvcTokoOnline.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on" + searchString;
+        }
+
+public IActionResult Index( string searchString)
+{
+    var category = from m in _context.categories
+                 select m;
+    if (!string.IsNullOrEmpty(searchString))
+    {
+        category = category.Where(s => s.Nama.Contains(searchString));
+    }
+    return View(category);
+}
 
         public IActionResult Login()
         {
@@ -33,7 +45,7 @@ namespace MvcTokoOnline.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Bind("ID,Email,Pasword")] Customer customer)
+        public async Task<IActionResult> Login([Bind("ID, Email, Password")] Customer customer)
         {
             if (ModelState.IsValid)
             {

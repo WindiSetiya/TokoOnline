@@ -6,8 +6,8 @@ namespace MvcTokoOnline.Models
     public class TransaksiDetail
     {
         public int ID { get; set; }
-        public string ProdukID { get; set; }
-        public string TransaksiID { get; set; }
-        public string Jumlah { get; set; }
+        public int ProdukID { get; set; }
+        public int TransaksiID { get; set; }
+        public double Jumlah { get; set; }
     }
 }

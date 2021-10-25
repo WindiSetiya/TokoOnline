@@ -8,6 +8,6 @@ namespace MvcTokoOnline.Models
         public int ID { get; set; }
         public string Nama { get; set; }
         public string Ukuran { get; set; }
-        public string KategoriID { get; set; }
+        public int KategoriID { get; set; }
     }
 }
