@@ -92,10 +92,12 @@ namespace MvcTokoOnline.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("longtext");
@@ -132,10 +134,12 @@ namespace MvcTokoOnline.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("longtext");
@@ -209,6 +213,96 @@ namespace MvcTokoOnline.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("MvcTokoOnline.Models.Kategori", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nama")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("categories");
+                });
+
+            modelBuilder.Entity("MvcTokoOnline.Models.Produk", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("KategoriID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nama")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Ukuran")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("KategoriID");
+
+                    b.ToTable("product");
+                });
+
+            modelBuilder.Entity("MvcTokoOnline.Models.SistemPembayaran", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("MetodePembayaran")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("sistemPembayarans");
+                });
+
+            modelBuilder.Entity("MvcTokoOnline.Models.Transaksi", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CustomerID")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("SistemPembayaranID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TanggalPembayaran")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("transaksi");
+                });
+
+            modelBuilder.Entity("MvcTokoOnline.Models.TransaksiDetail", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Jumlah")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int>("ProdukID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TransaksiID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("transaksiDetails");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -258,6 +352,20 @@ namespace MvcTokoOnline.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MvcTokoOnline.Models.Produk", b =>
+                {
+                    b.HasOne("MvcTokoOnline.Models.Kategori", null)
+                        .WithMany("Category")
+                        .HasForeignKey("KategoriID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MvcTokoOnline.Models.Kategori", b =>
+                {
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

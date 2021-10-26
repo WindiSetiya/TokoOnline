@@ -7,7 +7,9 @@ namespace MvcTokoOnline.Models
     {
         public int ID { get; set; }
         public int SistemPembayaranID { get; set; }
-        public int CustomerID  { get; set; }
-        public int TanggalPembayaran { get; set; }
+        public string CustomerID  { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime TanggalPembayaran { get; set; }
     }
 }

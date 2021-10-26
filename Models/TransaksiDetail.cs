@@ -8,6 +8,6 @@ namespace MvcTokoOnline.Models
         public int ID { get; set; }
         public int ProdukID { get; set; }
         public int TransaksiID { get; set; }
-        public double Jumlah { get; set; }
+        public decimal Jumlah { get; set; }
     }
 }
