@@ -9,6 +9,6 @@ namespace MvcTokoOnline.Models
     {
         public int ID { get; set; }
         public string Nama { get; set; }
-        public List <Produk> Category{get;set;}
+        public virtual List <Produk> Produks { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+
 
 namespace MvcTokoOnline.Models
 {
@@ -7,5 +9,7 @@ namespace MvcTokoOnline.Models
     {
         public int ID { get; set; }
         public string MetodePembayaran { get; set; }
+        public virtual List<Transaksi> Transaksis { get; set; }
+
     }
 }
