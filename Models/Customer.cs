@@ -7,6 +7,6 @@ namespace MvcTokoOnline.Models
 {
     public class Customer : IdentityUser
     {
-        public virtual List<Transaksi> Transaksis { get; set; }
+        public virtual List<Transaksi> transaksi { get; set; }
     }
 }

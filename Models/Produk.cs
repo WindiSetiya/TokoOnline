@@ -11,6 +11,6 @@ namespace MvcTokoOnline.Models
         public string Ukuran { get; set; }
         public int KategoriID { get; set; }
         public virtual Kategori Kategori { get; set; }
-        public virtual List <TransaksiDetail> TransaksiDetails { get; set; }
+        public virtual List<TransaksiDetail> transaksiDetails { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace MvcTokoOnline.Models
     {
         public int ID { get; set; }
         public string MetodePembayaran { get; set; }
-        public virtual List<Transaksi> Transaksis { get; set; }
+        public virtual List<Transaksi> transaksi { get; set; }
 
     }
 }
