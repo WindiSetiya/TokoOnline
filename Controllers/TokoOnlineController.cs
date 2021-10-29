@@ -32,5 +32,26 @@ namespace MvcTokoOnline.Controllers
             var user = _context.Users.Find(userId);
             return View(user);
         }
+        public async Task<IActionResult> Produk()
+        {
+            return View(await _context.product.ToListAsync());
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ID,Nama,Ukuran,CustomerID")] Produk produk)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(produk);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Produk));
+            }
+            return View(produk);
+        }
     }
 }
