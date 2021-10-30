@@ -53,5 +53,14 @@ namespace MvcTokoOnline.Controllers
             }
             return View(produk);
         }
+        public IActionResult Kategori()
+        {
+            return View(_context.categories.ToList());
+        }
+        public IActionResult Details()
+        {
+            return View(_context.categories.ToList());
+        }
+
     }
 }

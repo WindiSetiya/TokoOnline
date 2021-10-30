@@ -1,0 +1,28 @@
+@model IEnumerable<Kategori>
+@{
+    ViewData["Title"] = "Kategori";
+}
+
+<body class="body">
+<section>
+    <div class="divisi">
+    <h2>Kategori Produk</h2>
+    <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Kategori </th>
+                <th scope="col">Keterangan</th>
+            </tr>
+            </thead>
+    @foreach (var item in Model)
+    {
+            <tbody>
+            <tr>
+                <td>@item.ID->@item.Nama</td> 
+                <td><a asp-controller="MvcTokoOnline" asp-action="Details" asp-route-id="@item.ID">Details</a> </td>
+            </tr>
+            </tbody>
+    }
+        </table>
+</section>
+</body>
