@@ -7,6 +7,8 @@
 <section>
     <div class="divisi">
     <h2>Kategori Produk</h2>
+    <img src="https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/7/13/587def79-d051-40c5-9d5f-18625fcc8211.jpg" class="rounded float-left" alt="">
+    <img src="https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/7/28/431e5411-153c-49b4-bdf3-037bf64c0311.jpg" class="rounded float-right" alt="">
     <table class="table table-striped">
             <thead>
             <tr>
@@ -19,10 +21,14 @@
             <tbody>
             <tr>
                 <td>@item.ID->@item.Nama</td> 
-                <td><a asp-controller="MvcTokoOnline" asp-action="Details" asp-route-id="@item.ID">Details</a> </td>
+                <td><a asp-controller="TokoOnline" asp-action="Details" asp-route-id="@item.ID">Details</a> </td>
             </tr>
             </tbody>
     }
         </table>
 </section>
 </body>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>

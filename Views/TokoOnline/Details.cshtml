@@ -1,22 +1,28 @@
-@model IEnumerable<Produk>
+@model Produk
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Home Page";
 }
 
-<body>
-    @foreach (var item in Model)
-    {
-    <table class="table table-striped ">
-            <thead>
-            <tr>
-                <th scope="col">Detail Produk</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><h4> @item.Nama</h4></td> 
-            </tr>
-            </tbody>
-        </table>
-    }
-</body>
+<h1>Rincian Produk</h1>
+
+<table class="table">
+    <tr>
+        <td>Nama produk:</td>
+        <td>@Html.DisplayFor(modelItem => Model.Nama)</td>
+    </tr>
+    <tr>
+        <td>Ukuran:</td>
+        <td>@Html.DisplayFor(modelItem => Model.Ukuran)</td>
+    </tr>
+    <tr>
+        <td>Harga:</td>
+        <td>@Html.DisplayFor(modelItem => Model.Harga)</td>
+    </tr>
+    <tr>
+        <td><a asp-controller="TokoOnline" asp-action="Transaksi" asp-route-id="@Model.ID">Beli Produk</a> </td>
+    </tr>
+</table>
+
+<div>
+    <a asp-action="Kategori">Back to List</a>
+</div>

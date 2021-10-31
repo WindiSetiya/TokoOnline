@@ -1,4 +1,4 @@
-@model MvcTokoOnline.Models.Produk
+@model MvcTokoOnline.Models.Kategori
 
 @{
     ViewData["Title"] = "Create";
@@ -6,7 +6,6 @@
 
 <h1>Create</h1>
 
-<h4>List Produk</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,16 +17,6 @@
                 <span asp-validation-for="Nama" class="text-danger"></span>
             </div>
             <div class="form-group">
-            <label asp-for="Ukuran" class="control-label"></label>
-            <input asp-for="Ukuran" class="form-control" />
-            <span asp-validation-for="Ukuran" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-            <label asp-for="KategoriID" class="control-label"></label>
-            <input asp-for="KategoriID" class="form-control" />
-            <span asp-validation-for="KategoriID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -35,5 +24,5 @@
 </div>
 
 <div>
-    <a asp-action="Produk">Back to List</a>
+    <a asp-action="Kategori">Back to List</a>
 </div>

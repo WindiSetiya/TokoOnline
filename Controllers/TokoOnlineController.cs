@@ -32,10 +32,6 @@ namespace MvcTokoOnline.Controllers
             var user = _context.Users.Find(userId);
             return View(user);
         }
-        public async Task<IActionResult> Produk()
-        {
-            return View(await _context.product.ToListAsync());
-        }
         public IActionResult Create()
         {
             return View();
@@ -43,23 +39,33 @@ namespace MvcTokoOnline.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Nama,Ukuran,CustomerID")] Produk produk)
+        public async Task<IActionResult> Create([Bind("ID,Nama")] Kategori kategori)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(produk);
+                _context.Add(kategori);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Produk));
+                return RedirectToAction(nameof(kategori));
             }
-            return View(produk);
+            return View(kategori);
         }
         public IActionResult Kategori()
         {
             return View(_context.categories.ToList());
         }
-        public IActionResult Details()
+        public async Task<IActionResult> Details(int? id)
         {
-            return View(_context.categories.ToList());
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var produk = await _context.product
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (produk == null)
+            {
+                return NotFound();
+            }
+            return View(produk);
         }
 
     }
