@@ -3,6 +3,8 @@
     ViewData["Title"] = "Home Page";
 }
 
+<body background="https://i.pinimg.com/originals/72/6c/ce/726ccedea1e3e4a5f53274b153150103.png"></body>
+
 <h1>Rincian Produk</h1>
 
 <table class="table">
@@ -19,10 +21,6 @@
         <td>@Html.DisplayFor(modelItem => Model.Harga)</td>
     </tr>
     <tr>
-        <td><a asp-controller="TokoOnline" asp-action="Transaksi" asp-route-id="@Model.ID">Beli Produk</a> </td>
+        <td><a asp-controller="TokoOnline" asp-action="MetodePembayaran" asp-route-id="@Model.ID">Beli Produk</a> </td>
     </tr>
 </table>
-
-<div>
-    <a asp-action="Kategori">Back to List</a>
-</div>

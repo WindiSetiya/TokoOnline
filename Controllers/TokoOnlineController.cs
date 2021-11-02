@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Identity;
 
 namespace MvcTokoOnline.Controllers
 {
-    [Authorize]
     public class TokoOnlineController : Controller
     {
         MvcTokoOnlineDbContext _context;
@@ -67,6 +66,36 @@ namespace MvcTokoOnline.Controllers
             }
             return View(produk);
         }
+        public IActionResult MetodePembayaran()
+        {
+            return View(_context.sistemPembayarans.ToList());
+        }
 
+        [Authorize]
+        public IActionResult Transaksi()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Transaksi([Bind("CustomerID, SistemPembayaranID, TanggalPembayaran")] Transaksi transaksi)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(transaksi);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(transaksi));
+            }
+            return View(transaksi);
+        }
+        public IActionResult TransaksiDetail()
+        {
+            return View(_context.transaksiDetails.ToList());
+        }
+        public IActionResult Result()
+        {
+            return View();
+        }
     }
 }
