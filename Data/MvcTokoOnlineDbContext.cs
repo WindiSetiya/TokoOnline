@@ -13,6 +13,5 @@ namespace MvcTokoOnline.Data
         public DbSet<Produk> product { get; set; }
         public DbSet<SistemPembayaran> sistemPembayarans { get; set; }
         public DbSet<Transaksi> transaksi { get; set; }
-        public DbSet<TransaksiDetail> transaksiDetails { get; set; }
     }
 }

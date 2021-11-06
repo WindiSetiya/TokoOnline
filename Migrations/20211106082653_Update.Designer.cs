@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcTokoOnline.Data;
 
 namespace MvcTokoOnline.Migrations
 {
     [DbContext(typeof(MvcTokoOnlineDbContext))]
-    partial class MvcTokoOnlineDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211106082653_Update")]
+    partial class Update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

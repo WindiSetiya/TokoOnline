@@ -89,10 +89,6 @@ namespace MvcTokoOnline.Controllers
             }
             return View(transaksi);
         }
-        public IActionResult TransaksiDetail()
-        {
-            return View(_context.transaksiDetails.ToList());
-        }
         public IActionResult Result()
         {
             return View();

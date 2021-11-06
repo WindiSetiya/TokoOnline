@@ -15,6 +15,5 @@ namespace MvcTokoOnline.Models
 
         [DataType(DataType.Date)]
         public DateTime TanggalPembayaran { get; set; }
-        public virtual List<TransaksiDetail> transaksiDetails { get; set; }
     }
 }
