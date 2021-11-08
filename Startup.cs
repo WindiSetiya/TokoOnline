@@ -13,6 +13,7 @@ using Pomelo.EntityFrameworkCore.MySql;
 using MvcTokoOnline.Data;
 using MvcTokoOnline.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace MvcTokoOnline
 {
@@ -31,7 +32,7 @@ namespace MvcTokoOnline
             services.AddControllersWithViews();
             services.AddDbContext<MvcTokoOnlineDbContext>(option =>
             {
-                var connectionString = Configuration.GetConnectionString("TokoOnline");
+                var connectionString = Configuration["ConnectionString:TokoOnline"];
                 var serverVersion = new MariaDbServerVersion(new Version(10, 6, 4));
                 option.UseMySql(connectionString, serverVersion);
                 option.UseLazyLoadingProxies();
@@ -41,6 +42,11 @@ namespace MvcTokoOnline
                 .AddEntityFrameworkStores<MvcTokoOnlineDbContext>()
                 .AddDefaultTokenProviders();
             services.AddRazorPages();
+        }
+
+        private void serverVersion(MySqlDbContextOptionsBuilder obj)
+        {
+            throw new NotImplementedException();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +62,8 @@ namespace MvcTokoOnline
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseStatusCodePages();
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
