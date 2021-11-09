@@ -12,5 +12,7 @@ namespace MvcTokoOnline.Models
         public double Harga { get; set; }
         public int KategoriID { get; set; }
         public virtual Kategori Kategori { get; set; }
+        public virtual List<Transaksi> transaksi{ get; set; }
+
     }
 }

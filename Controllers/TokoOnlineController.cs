@@ -71,23 +71,20 @@ namespace MvcTokoOnline.Controllers
             return View(_context.sistemPembayarans.ToList());
         }
 
-        [Authorize]
-        public IActionResult Transaksi()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Transaksi([Bind("CustomerID, SistemPembayaranID, TanggalPembayaran")] Transaksi transaksi)
+        public async Task<IActionResult> Transaksi(int? id)
         {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                _context.Add(transaksi);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(transaksi));
+                return NotFound();
             }
-            return View(transaksi);
+            var transaction = await _context.transaksi
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+            return View(transaction);        
         }
         public IActionResult Result()
         {
