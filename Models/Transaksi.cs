@@ -10,8 +10,8 @@ namespace MvcTokoOnline.Models
         public int ID { get; set; }
         public int ProdukID { get; set; }
         public virtual Produk Produk { get; set; }
-        public int SistemPembayaranID { get; set; }
-        public virtual SistemPembayaran SistemPembayaran { get; set; }
+        public string Warna { get; set; }
+        public string MetodePembayaran { get; set; }
         public string CustomerID  { get; set; }
         public virtual Customer Customer { get; set; }
 

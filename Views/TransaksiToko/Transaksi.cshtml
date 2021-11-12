@@ -1,0 +1,70 @@
+@model MvcTokoOnline.Models.Transaksi
+
+@{
+    ViewData["Title"] = "Transaksi";
+}
+
+<h2>Lengkapi Detail Pesananmu</h2>
+
+<div class="row">
+    <div class="col-md-4">
+ <form asp-action="Result">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div> 
+            <div class="form-group">
+                <label asp-for="Produk.Nama" class="control-label"></label>
+                <select asp-for="Produk.Nama" class="form-control">
+                <option value="1">Blouse-Rp75.000,00</option>
+                <option value="2">Celana linen cewek-Rp70.000,00</option>
+                <option value="3">Segiempat paris premium-Rp22.000,00</option>
+                <option value="4">Cardigan crop hitam-Rp85.000,00</option>
+                <option value="4">Set piyama polos-Rp87.000,00</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produk.Ukuran" class="control-label"></label>
+                <select asp-for="Produk.Ukuran" class="form-control">
+                <option value="1">S</option>
+                <option value="2">M</option>
+                <option value="3">L</option>
+                <option value="4">XL</option>
+                <option value="4">All Size</option>
+           </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Warna" class="control-label"></label>
+                <select asp-for="Warna" class="form-control">
+                <option value="1">Hitam</option>
+                <option value="2">Dusty pink</option>
+                <option value="3">Army</option>
+                <option value="4">Maroon</option>
+                <option value="4">Random</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetodePembayaran" class="control-label"></label>
+                <select asp-for="MetodePembayaran" class="form-control">
+                <option value="1">COD</option>
+                <option value="2">Transfer via BRI No. Rek 66754-425377-221</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.Email" class="control-label"></label>
+                <input asp-for="Customer.Email" class="form-control" />
+                <span asp-validation-for="Customer.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanggalPembayaran" class="control-label"></label>
+                <input asp-for="TanggalPembayaran" class="form-control" />
+                <span asp-validation-for="TanggalPembayaran" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Checkout" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

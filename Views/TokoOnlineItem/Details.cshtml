@@ -1,9 +1,7 @@
 @model Produk
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Detail Produk";
 }
-
-<body background="https://i.pinimg.com/originals/72/6c/ce/726ccedea1e3e4a5f53274b153150103.png"></body>
 
 <h1>Rincian Produk</h1>
 
@@ -21,6 +19,6 @@
         <td>@Html.DisplayFor(modelItem => Model.Harga)</td>
     </tr>
     <tr>
-        <td><a asp-controller="TokoOnline" asp-action="MetodePembayaran">Beli Produk</a> </td>
+        <td><a asp-controller="TransaksiToko" asp-action="Transaksi">Beli Produk</a></td>
     </tr>
 </table>

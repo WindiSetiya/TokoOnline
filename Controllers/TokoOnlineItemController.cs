@@ -15,16 +15,15 @@ using Microsoft.AspNetCore.Identity;
 
 namespace MvcTokoOnline.Controllers
 {
-    public class TokoOnlineController : Controller
+    public class TokoOnlineItemController : Controller
     {
         MvcTokoOnlineDbContext _context;
         private UserManager<Customer> _userManager;
-        public TokoOnlineController (MvcTokoOnlineDbContext context, UserManager<Customer> userManager)
+        public TokoOnlineItemController (MvcTokoOnlineDbContext context, UserManager<Customer> userManager)
         {
             _context = context;
             _userManager = userManager;
         }
-
         public IActionResult Index()
         {
             var userId = _userManager.GetUserId(User);
@@ -65,30 +64,6 @@ namespace MvcTokoOnline.Controllers
                 return NotFound();
             }
             return View(produk);
-        }
-        public IActionResult MetodePembayaran()
-        {
-            return View(_context.sistemPembayarans.ToList());
-        }
-
-
-        public async Task<IActionResult> Transaksi(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var transaction = await _context.transaksi
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (transaction == null)
-            {
-                return NotFound();
-            }
-            return View(transaction);        
-        }
-        public IActionResult Result()
-        {
-            return View();
         }
     }
 }

@@ -3,8 +3,6 @@
     ViewData["Title"] = "Kategori";
 }
 
-<body background="https://i.pinimg.com/originals/72/6c/ce/726ccedea1e3e4a5f53274b153150103.png"></body>
-
 <body class="body">
 <section>
     <div class="divisi">
@@ -23,7 +21,7 @@
             <tbody>
             <tr>
                 <td>@item.ID->@item.Nama</td> 
-                <td><a asp-controller="TokoOnline" asp-action="Details" asp-route-id="@item.ID">Details</a> </td>
+                <td><a asp-controller="TokoOnlineItem" asp-action="Details" asp-route-id="@item.ID">Details</a> </td>
             </tr>
             </tbody>
     }
